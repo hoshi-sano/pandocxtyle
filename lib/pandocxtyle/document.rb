@@ -24,6 +24,8 @@ module Pandocxtyle
         new_paragraph.append_field_simple(text_run.node,
                                           {"w:instr" => " TOC \\o \"1-3\" \\u "})
         new_paragraph.insert_before(first_content)
+        new_paragraph.insert_page_break(:before)
+        new_paragraph.insert_page_break(:after)
         doc.save(params["o"])
       end
     end
