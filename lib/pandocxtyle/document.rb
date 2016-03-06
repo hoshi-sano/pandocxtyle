@@ -29,5 +29,16 @@ module Pandocxtyle
         doc.save(params["o"])
       end
     end
+
+    def pagebreak_h1
+      params = ARGV.getopts("i:o:")
+      Docx::Document.open(params["i"]) do |doc|
+        doc.paragraphs.each do |paragraph|
+          next unless paragraph.pstyle_is_a?("Heading1")
+          paragraph.insert_page_break(:before)
+        end
+        doc.save(params["o"])
+      end
+    end
   end
 end

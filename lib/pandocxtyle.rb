@@ -10,7 +10,7 @@ require "pandocxtyle/drawing"
 module Pandocxtyle
   COMMAND_WHITELIST = %w(document table drawing)
   ACTION_WHITELIST = {
-    "document" => %w(add_index),
+    "document" => %w(add_index pagebreak_h1),
     "table"    => %w(sub_style seq_caption),
     "drawing"  => %w(seq_caption),
   }
@@ -36,6 +36,7 @@ module Pandocxtyle
   ACTIONS AND OPTIONS:
     document
       add_index               insert index before first paragraph
+      pagebreak_h1            insert page break before Heading1
 
     table
       sub_style               substitute the table style
