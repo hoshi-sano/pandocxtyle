@@ -10,7 +10,7 @@ require "pandocxtyle/drawing"
 module Pandocxtyle
   COMMAND_WHITELIST = %w(document table drawing)
   ACTION_WHITELIST = {
-    "document" => %w(add_index pagebreak_h1),
+    "document" => %w(show_xml add_index pagebreak_h1),
     "table"    => %w(sub_style seq_caption),
     "drawing"  => %w(seq_caption),
   }
@@ -35,6 +35,7 @@ module Pandocxtyle
 
   ACTIONS AND OPTIONS:
     document
+      show_xml                output word/document.xml (you cannot use '-o' option)
       add_index               insert index before first paragraph
       pagebreak_h1            insert page break before Heading1
 

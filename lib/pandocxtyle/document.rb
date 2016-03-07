@@ -3,6 +3,13 @@ module Pandocxtyle
 
   module Document
     module_function
+    def show_xml
+      params = ARGV.getopts("i:")
+      Docx::Document.open(params["i"]) do |doc|
+        puts doc.doc.to_xml
+      end
+    end
+
     def add_index
       params = ARGV.getopts("i:o:")
       document_properties = %w(Title Author Date)
