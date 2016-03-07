@@ -16,11 +16,9 @@ module Pandocxtyle
           Nokogiri::XML::Node.new("w:p", first_content.parent)
         )
         text_run = Docx::Elements::Containers::TextRun.create_with(new_paragraph)
-        props = ["w:b", "w:bCs", "w:noProof"].map { |prop|
-          Nokogiri::XML::Node.new(prop, text_run.node)
-        }
-        text_run.append_property(*props)
-        text_run.text = "INDEX: please update this field."
+        text_run.append_fld_char("begin", {"w:dirty" => "true"})
+        text_run.append_fld_char("separate")
+        text_run.append_fld_char("end")
         new_paragraph.append_field_simple(text_run.node,
                                           {"w:instr" => " TOC \\o \"1-3\" \\u "})
         new_paragraph.insert_before(first_content)

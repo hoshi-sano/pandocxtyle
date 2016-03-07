@@ -1,8 +1,9 @@
 module Pandocxtyle
   module Patches
     refine ::Docx::Elements::Containers::TextRun do
-      def append_fld_char(type)
+      def append_fld_char(type, attributes = {})
         fld_char = Nokogiri::XML::Node.new("w:fldChar", @node)
+        attributes.each { |key, value| fld_char[key] = value }
         fld_char["w:fldCharType"] = type
         @node.add_child(fld_char)
         self
