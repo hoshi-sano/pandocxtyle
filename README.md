@@ -16,6 +16,12 @@ this software is still a work in progress.
   $ pandocxtyle --help
 ```
 
+### Show word/document.xml
+
+```
+  $ pandocxtyle document show_xml -i input.docx
+```
+
 ### Insert Index
 
 ```
