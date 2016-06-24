@@ -34,6 +34,25 @@ this software is still a work in progress.
   $ pandocxtyle document pagebreak_h1 -i input.docx -o output.docx
 ```
 
+### Show All Table Styles
+
+```
+  $ pandocxtyle table show_style -i input.docx
+  - style_id: a2
+    name:     Normal Table
+    based_on:
+  - style_id: af6
+    name:     Table Grid
+    based_on: a2
+  - style_id: 8
+    name:     Table Grid 8
+    based_on: a2
+  - style_id: 40
+    name:     Medium Shading 1 Accent 4
+    based_on: a2
+  ...
+```
+
 ### Substitute Table Style
 
 ```

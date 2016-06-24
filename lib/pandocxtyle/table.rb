@@ -7,6 +7,23 @@ module Pandocxtyle
 
     module_function
 
+    def show_style
+      params = ARGV.getopts("i:")
+      Docx::Document.open(params["i"]) do |doc|
+        doc.styles.xpath("//w:style[@w:type='table']").each do |node|
+          style_id = node.attribute("styleId").value
+          name_node = node.xpath("w:name").first
+          name = name_node ? name_node.attribute("val").to_s : ""
+          based_on_node = node.xpath("w:basedOn").first
+          based_on = based_on_node ? based_on_node.attribute("val").to_s : ""
+          # TODO: format
+          puts "- style_id: #{style_id}\n" \
+               "  name:     #{name}\n" \
+               "  based_on: #{based_on}"
+        end
+      end
+    end
+
     def sub_style
       params = ARGV.getopts("i:o:",
                             "target:#{DEFAULT_TARGET_STYLE}", "with:")

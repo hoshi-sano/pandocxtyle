@@ -11,7 +11,7 @@ module Pandocxtyle
   COMMAND_WHITELIST = %w(document table drawing)
   ACTION_WHITELIST = {
     "document" => %w(show_xml add_index pagebreak_h1),
-    "table"    => %w(sub_style seq_caption),
+    "table"    => %w(show_style sub_style seq_caption),
     "drawing"  => %w(seq_caption),
   }
   EXTRA_ACTIONS = %w(-v --version -h --help)
@@ -40,6 +40,7 @@ module Pandocxtyle
       pagebreak_h1            insert page break before Heading1
 
     table
+      show_style              list all table styles
       sub_style               substitute the table style
         -t, --target          target style id for substitution
                               DEFAULT: '#{Table::DEFAULT_TARGET_STYLE}'
