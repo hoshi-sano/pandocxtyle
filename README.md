@@ -73,3 +73,7 @@ this software is still a work in progress.
   $ pandocxtyle drawing seq_caption -i input.docx -o output.docx \
     --label 'Fig.'
 ```
+
+## License
+
+ This software is released under the MIT License, see LICENSE.txt.
